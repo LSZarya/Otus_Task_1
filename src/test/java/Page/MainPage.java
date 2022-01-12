@@ -35,7 +35,7 @@ public class MainPage extends BasePage{
     @FindBy(css = "a.lessons__new-item .lessons__new-item-title")
     private List<WebElement> coursesNameAll;
 
-    @FindBy(css = "h1")
+    @FindBy(css = ".course-header2__title")
     private WebElement courseNameH1;
 
     public MainPage openOtus(){
@@ -218,7 +218,9 @@ public class MainPage extends BasePage{
         i--;
         String courseName = coursesNameAll.get(i).getText();
 
-        actions.moveToElement(courses.get(i))
+        actions
+                .moveToElement(courses.get(i))
+                .pause(1000)
                 .click()
                 .build()
                 .perform();

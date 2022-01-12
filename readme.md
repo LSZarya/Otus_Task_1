@@ -3,10 +3,10 @@
 Запуск тестов происходит и файла _testng.xml_. Для запуска теста по умолчанию установлены настройки
 
 VM options:
--ea -Dbrowser=CHROME -DnameSpecialCourse=Android -DnamePopularCourse=PHP -DnameOpenCourse=3
+-ea -Dbrowser=CHROME -DnameSpecialCourse=Android -DnamePopularCourse=PHP -DnameOpenCourse=1
 
 browser - выбор браузера
 nameSpecialCourse - Фильтр названия специального курса (Поиск курса по ключевым словам)
 namePopularCourse - Фильтр названия популярного курса (Поиск курса по ключевым словам)
-nameOpenCourse - выбор курса по порядку страницу, которого открыть. (Страница курса будет открыта, но проверка заголовка корректно работает для 2,3 станицы)
+nameOpenCourse - выбор курса по порядку страницу, которого открыть. (Страница курса будет открыта, но проверка заголовка корректно работает на 1 станице, с сегодняшнего дня)
 
