@@ -37,7 +37,7 @@ public class MarkBeforeClickListener implements WebDriverEventListener {
     public void beforeGetText(WebElement element, WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", element);
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

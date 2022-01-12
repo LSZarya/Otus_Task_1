@@ -27,48 +27,49 @@ public class StartTest extends WebDriverFactory {
         driver.quit();// Закрытие браузера
     }
 
-    @Test(enabled = false)
+    @Test
     public void CheckPopularCourse(){
         new MainPage(driver)
                 .openOtus()
                 .PopularCourse(System.getProperty("namePopularCourse"));
     }
-    @Test(enabled = false)
+
+    @Test
     public void CheckSpecialCourse(){
         new MainPage(driver)
                 .openOtus()
                 .SpecialCourse(System.getProperty("nameSpecialCourse"));
     }
 
-    @Test(enabled = false)
+    @Test
     public void CheckIsBeforePopularCourse(){
         new MainPage(driver)
                 .openOtus()
                 .PopularCourseIsBefore();
     }
 
-    @Test(enabled = false)
+    @Test
     public void CheckIsAfterPopularCourse(){
         new MainPage(driver)
                 .openOtus()
                 .PopularCourseIsAfter();
     }
 
-    @Test(enabled = false)
+    @Test
     public void CheckIsBeforeSpecialCourse(){
         new MainPage(driver)
                 .openOtus()
                 .SpecialCourseIsBefore();
     }
 
-    @Test(enabled = false)
+    @Test
     public void CheckIsAfterSpecialCourse(){
         new MainPage(driver)
                 .openOtus()
                 .SpecialCourseIsAfter();
     }
 
-    @Test
+    @Test(enabled = false)
     public void CheckClickCourse(){
         new MainPage(driver)
                 .openOtus()
