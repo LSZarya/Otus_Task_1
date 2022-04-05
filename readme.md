@@ -1,15 +1,15 @@
-#Запуск тестов _Otus_ дз. №1
+# Запуск тестов _Otus_ дз. №1
 
-###Запуск тестов происходит и файла _testng.xml_. Для запуска теста установите настройки запуска
-
----
-VM options:
--Dbrowser=CHROME -DnameSpecialCourse=Android -DnamePopularCourse=PHP -DnameOpenCourse=1
----
+## Запуск тестов происходит и файла _testng.xml_. Для запуска теста установите настройки запуска
 
 ---
-Прописать в терминале:
-mvn test -Dbrowser=CHROME -DnameSpecialCourse=Android -DnamePopularCourse=PHP -DnameOpenCourse=1
+### VM options:
+### -Dbrowser=CHROME -DnameSpecialCourse=Android -DnamePopularCourse=PHP -DnameOpenCourse=1
+---
+
+---
+### Прописать в терминале:
+### mvn test -Dbrowser=CHROME -DnameSpecialCourse=Android -DnamePopularCourse=PHP -DnameOpenCourse=1
 ---
 
 --
