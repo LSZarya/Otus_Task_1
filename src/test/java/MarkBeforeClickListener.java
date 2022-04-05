@@ -6,8 +6,9 @@ public class MarkBeforeClickListener implements WebDriverEventListener {
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", element);
+        // Пауза, что бы мы успели рассмотреть
         try {
-            Thread.sleep(1_000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -25,19 +26,31 @@ public class MarkBeforeClickListener implements WebDriverEventListener {
 
     @Override
     public void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", element);
+        // Пауза, что бы мы успели рассмотреть
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void afterChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px solid red'", element);
     }
 
     @Override
     public void beforeGetText(WebElement element, WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", element);
+        // Пауза, что бы мы успели рассмотреть
         try {
-            Thread.sleep(500);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -45,11 +58,9 @@ public class MarkBeforeClickListener implements WebDriverEventListener {
 
     @Override
     public void afterGetText(WebElement element, WebDriver driver, String text) {
-        try {
+        if (element.isDisplayed()) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px solid red'",
                     element);
-        }catch(Exception e) {
-            e.printStackTrace();
         }
     }
 

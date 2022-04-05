@@ -7,11 +7,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class MainPage extends BasePage{
+
     public MainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -44,34 +49,14 @@ public class MainPage extends BasePage{
     }
 
     public MainPage PopularCourse(String name){
-        try {
-            for (int i = 0 ; ; i++) {
-                String courses = popularCourses.get(i).getText();
-                if (courses.contains(name)) {
-                    System.out.println("Вы выбрали \"Популярные курсы\" курс-сы - " + courses);
-                    break;
-                }
-            }
-        }catch (Exception e){
-            System.out.println("Курс не найден");
-            Assert.fail();
-        }
+        String courses = popularCourses.stream().filter(x -> x.getText().equals(name)).toString() == null ? "Курс не найден" : popularCourses.stream().filter(x -> x.getText().equals(name)).toString();
+        System.out.println("Вы выбрали \"Популярные курсы\" курс-сы - " + courses);
         return this;
     }
 
     public MainPage SpecialCourse(String name){
-        try {
-            for (int i = 0 ; ; i++) {
-                String courses = specialCourses.get(i).getText();
-                if (courses.contains(name)) {
-                    System.out.println("Вы выбрали \"Специальные курсы\" курс-сы - " + courses);
-                    break;
-                }
-            }
-        }catch (Exception e){
-            System.out.println("Курс не найден");
-            Assert.fail();
-        }
+        String courses = specialCourses.stream().filter(x -> x.getText().equals(name)).toString() == null ? "Курс не найден" : specialCourses.stream().filter(x -> x.getText().equals(name)).toString();
+        System.out.println("Вы выбрали \"Специальные курсы\" курс-сы - " + courses);
         return this;
     }
 
@@ -198,19 +183,8 @@ public class MainPage extends BasePage{
     }
 
     public int dateMonthStringInInt(String Month){
-        switch (Month) {
-            case "января":
-                return  1;
-            case "февраля":
-                return  2;
-            case "марта":
-                return  3;
-            case "декабря":
-                return  12;
-            default:
-                System.out.println("Лев добавь месяцы");
-                return 0;
-        }
+        Locale locales = Locale.getDefault();
+        return Integer.parseInt(new SimpleDateFormat("MM",locales).format(Month));
     }
 
     public MainPage ClickCourse(int i){
@@ -229,6 +203,4 @@ public class MainPage extends BasePage{
 
         return this;
     }
-
-
 }

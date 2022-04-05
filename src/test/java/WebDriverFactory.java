@@ -8,7 +8,8 @@ import org.openqa.selenium.opera.OperaDriver;
 public class WebDriverFactory {
 
         public static WebDriver setupDriver(String driverType) {
-            switch (driverType) {
+            if (driverType == null) driverType = "CHROME";
+            switch (driverType.trim()) {
                 case "CHROME":
                     WebDriverManager.chromedriver().setup();
                     return new ChromeDriver();

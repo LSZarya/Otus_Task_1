@@ -7,19 +7,20 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class StartTest extends WebDriverFactory {
+public class CheckOtusPage {
 
-    public static EventFiringWebDriver driver;
+    private EventFiringWebDriver driver;
+    private MainPage mainPage;
 
     @BeforeTest
     public void setUp(ITestContext context) {
 
-        driver = new EventFiringWebDriver(setupDriver(System.getProperty("browser")));
+        driver = new EventFiringWebDriver(WebDriverFactory.setupDriver(System.getProperty("browser")));
         driver.register(new MarkBeforeClickListener());
         context.setAttribute("driver", driver);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);// Пауза на 5 секунд, для явного ожидания элемента
         driver.manage().window().maximize();//Открытие сайта на весь экран
-
+        mainPage = new MainPage(driver);
     }
 
     @AfterTest
@@ -27,51 +28,53 @@ public class StartTest extends WebDriverFactory {
         driver.quit();// Закрытие браузера
     }
 
+
     @Test
     public void CheckPopularCourse(){
-        new MainPage(driver)
+
+        mainPage
                 .openOtus()
                 .PopularCourse(System.getProperty("namePopularCourse"));
     }
 
     @Test
     public void CheckSpecialCourse(){
-        new MainPage(driver)
+        mainPage
                 .openOtus()
                 .SpecialCourse(System.getProperty("nameSpecialCourse"));
     }
 
     @Test
     public void CheckIsBeforePopularCourse(){
-        new MainPage(driver)
+        mainPage
                 .openOtus()
                 .PopularCourseIsBefore();
     }
 
     @Test
     public void CheckIsAfterPopularCourse(){
-        new MainPage(driver)
+        mainPage
                 .openOtus()
                 .PopularCourseIsAfter();
     }
 
     @Test
     public void CheckIsBeforeSpecialCourse(){
-        new MainPage(driver)
+        mainPage
                 .openOtus()
                 .SpecialCourseIsBefore();
     }
 
     @Test
     public void CheckIsAfterSpecialCourse(){
-        new MainPage(driver)
+        mainPage
                 .openOtus()
                 .SpecialCourseIsAfter();
     }
 
     @Test(enabled = false)
     public void CheckClickCourse(){
-        new MainPage(driver)
+        mainPage
                 .openOtus()
                 .ClickCourse(Integer.parseInt(System.getProperty("nameOpenCourse")));
     }

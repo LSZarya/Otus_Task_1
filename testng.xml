@@ -4,7 +4,7 @@
 <suite name="All Test Suite">
     <test name="OtusTest">
         <classes>
-            <class name="StartTest"/>
+            <class name="CheckOtusPage"/>
         </classes>
     </test>
 </suite>
